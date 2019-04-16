@@ -32,3 +32,10 @@ Route::put('posts/{id}',function(Request $request, $id){
 
     return $post;
 });
+
+Route::delete('posts/{id}',function($id){
+    Post::find($id)->delete();
+
+    return 204;
+
+});

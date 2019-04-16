@@ -22,6 +22,7 @@
             <input type="hidden" name="post_id">
 
             <button type="submit" class="btn btn-primary btn-edit">Edit post</button>
+            <button type="submit" class="btn btn-danger btn-delete">Delete post</button>
         </form>
     </div>
 
@@ -57,7 +58,6 @@
                     }),
                     success: function(res){
                         console.log(res)
-
                     }
                 })
         });
@@ -65,6 +65,25 @@
         }
 
         editPost();
+
+        function deletePost(){
+                $('.btn-delete').click(function(e){
+                    e.preventDefault();
+                    var title = $('#edit_one_post').find('input[name=title]');
+                var body = $('#edit_one_post').find('input[name=body]');
+                var post_id = $('#edit_one_post').find('input[name=post_id]')
+
+                $.ajax({
+                            type: 'DELETE',
+                            contentType: 'application/json',
+                            url: '/api/posts/' + post_id.val(),
+                            success:function(res){
+                                console.log(res)
+                            }
+                        })
+                })
+        }
+        deletePost();
 
         function getAllPosts(){
             $.ajax({
