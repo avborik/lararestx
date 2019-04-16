@@ -25,3 +25,10 @@ Route::get('posts',function(){
 Route::get('posts/{id}',function($id){
     return Post::find($id);
 });
+
+Route::put('posts/{id}',function(Request $request, $id){
+    $post = Post::findOrFail($id);
+    $post->update($request->all());
+
+    return $post;
+});

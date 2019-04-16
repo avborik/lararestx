@@ -3,6 +3,28 @@
 @section('content')
 
 <div class="container">
+
+    <div class="edit_post">
+        <br>
+        <h3>Edit post</h3>
+        <hr>
+        <form id="edit_one_post">
+            <div class="form-group">
+                <label for="title">Post title</label>
+                <input type="text" class="form-control" name="title" placeholder="Add a title">
+            </div>
+
+            <div class="form-group">
+                    <label for="body">Post content</label>
+                    <input type="text" class="form-control" name="body" placeholder="Add a content">
+            </div>
+
+            <input type="hidden" name="post_id">
+
+            <button type="submit" class="btn btn-primary btn-edit">Edit post</button>
+        </form>
+    </div>
+
     <div class="show_all">
         <br>
         <h3>All posts</h3>
@@ -17,6 +39,32 @@
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         });
+
+        function editPost(){
+            $('.btn-edit').click(function(e){
+                e.preventDefault();
+                var title = $('#edit_one_post').find('input[name=title]');
+                var body = $('#edit_one_post').find('input[name=body]');
+                var post_id = $('#edit_one_post').find('input[name=post_id]');
+
+                $.ajax({
+                    type:'PUT',
+                    contentType: 'application/json',
+                    url: '/api/posts/' + post_id.val(),
+                    data: JSON.stringify({
+                        title: title.val(),
+                        body: body.val()
+                    }),
+                    success: function(res){
+                        console.log(res)
+
+                    }
+                })
+        });
+
+        }
+
+        editPost();
 
         function getAllPosts(){
             $.ajax({
@@ -41,6 +89,9 @@
         function item_db(){
             $('.item_db').on('click',function(){
                 var id = $(this).data('id')
+                var title = $('#edit_one_post').find('input[name=title]');
+                var body = $('#edit_one_post').find('input[name=body]');
+                var post_id = $('#edit_one_post').find('input[name=post_id]');
 
                 // console.log(id)
 
@@ -48,7 +99,10 @@
                     url: '/api/posts/' + id,
                     type: 'GET',
                     success: function(res){
-                        console.log(res)
+                       // console.log(res)
+                       title.val(res.title);
+                       body.val(res.body);
+                       post_id.val(id);
                     }
                 })
             })
