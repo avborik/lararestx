@@ -26,6 +26,25 @@
         </form>
     </div>
 
+    <div class="add_post">
+        <br>
+        <h3>Add post</h3>
+        <hr>
+        <form id="add_one_post">
+            <div class="form-group">
+                <label for="title">Post title</label>
+                <input type="text" class="form-control" name="title" placeholder="Add a title">
+            </div>
+    
+            <div class="form-group">
+                <label for="body">Post content</label>
+                <input type="text" class="form-control" name="body" placeholder="Add a content">
+            </div>
+    
+            <button type="submit" class="btn btn-primary btn-submit">Add post</button>
+        </form>
+    </div>
+
     <div class="show_all">
         <br>
         <h3>All posts</h3>
@@ -40,6 +59,28 @@
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         });
+
+        function addOnePost(){
+            $('.btn-submit').click(function(e){
+                e.preventDefault();
+                var title = $('#add_one_post').find('input[name=title]');
+                var body = $('#add_one_post').find('input[name=body]');
+
+                $.ajax({
+                    type: 'POST',
+                    contentType: 'application/json',
+                    url:'/api/posts',
+                    data:JSON.stringify({
+                        title: title.val(),
+                        body: body.val()
+                    }),
+                    success: function(res){
+                        console.log(res);
+                    }
+                })
+            })
+        }
+        addOnePost();
 
         function editPost(){
             $('.btn-edit').click(function(e){

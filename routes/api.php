@@ -17,25 +17,33 @@ use Illuminate\Http\Request;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::get('posts','PostsController@index');
+Route::get('posts/{id}','PostsController@show');
+Route::post('posts','PostsController@store');
+Route::put('posts/{id}','PostsController@update');
+Route::delete('posts/{id}','PostsController@destroy');
 
-Route::get('posts',function(){
-    return Post::all();
-});
+// Route::get('posts',function(){
+//     return Post::all();
+// });
 
-Route::get('posts/{id}',function($id){
-    return Post::find($id);
-});
+// Route::get('posts/{id}',function($id){
+//     return Post::find($id);
+// });
 
-Route::put('posts/{id}',function(Request $request, $id){
-    $post = Post::findOrFail($id);
-    $post->update($request->all());
+// Route::put('posts/{id}',function(Request $request, $id){
+//     $post = Post::findOrFail($id);
+//     $post->update($request->all());
 
-    return $post;
-});
+//     return $post;
+// });
 
-Route::delete('posts/{id}',function($id){
-    Post::find($id)->delete();
+// Route::delete('posts/{id}',function($id){
+//     Post::find($id)->delete();
 
-    return 204;
+//     return 204;
 
-});
+// });
+// Route::post('posts',function(Request $request){
+//     return Post::create($request->all());
+// });
