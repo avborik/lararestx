@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\User;
 use Validator;
 use Illuminate\Http\Request;
@@ -44,5 +45,10 @@ class UserController extends Controller
         }else{
             return response()->json(['error'=> 'User is Loh'], 401);
         }
+    }
+
+    public function adminPost(){
+        $posts = Post::all();
+        return response()->json(['success'=> $posts], 200);
     }
 }

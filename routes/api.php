@@ -26,6 +26,11 @@ Route::delete('posts/{id}','PostsController@destroy');
 Route::post('login','UserController@login');
 Route::post('register','UserController@register');
 
+Route::group(['middleware'=> 'auth:api'],function(){
+    Route::get('adminpost','UserController@adminPost');
+});
+
+
 // Route::get('posts',function(){
 //     return Post::all();
 // });
