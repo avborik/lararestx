@@ -23,6 +23,7 @@ Route::post('posts','PostsController@store');
 Route::put('posts/{id}','PostsController@update');
 Route::delete('posts/{id}','PostsController@destroy');
 
+Route::post('login','UserController@login');
 Route::post('register','UserController@register');
 
 // Route::get('posts',function(){
