@@ -30,7 +30,7 @@ Route::group(['middleware'=> 'auth:api'],function(){
     Route::get('adminpost','UserController@adminPost');
 });
 
-
+Route::post('contact','EmailController@contact');
 // Route::get('posts',function(){
 //     return Post::all();
 // });
