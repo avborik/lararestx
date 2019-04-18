@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Post;
 use App\User;
 use Validator;
@@ -10,12 +11,14 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
     public function register(Request $request){
+
         $validator = Validator::make($request->all(),[
             'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required',
-            'c_password' => 'required|same:password'
+            'email'=> 'required|email|unique:users',
+            'password'=>'required',
+            'c_password'=>'required|same:password'
         ]);
 
         if($validator->fails()){
@@ -23,32 +26,35 @@ class UserController extends Controller
         }
 
         $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-
+        $input['password'] =  bcrypt($input['password']);
         $user = User::create($input);
 
         $success['token'] = $user->createToken('Lararest aut')->accessToken;
 
-        return response()->json(['success'=> $success], 200);
+        return response()->json(['success'=> $success ], 200);
+
     }
+
 
     public function login(){
         if(Auth::attempt([
             'email' => request('email'),
             'password' => request('password')
         ])){
-
+            // move->create token
             $user = Auth::user();
             $success['token'] = $user->createToken('Lararest aut')->accessToken;
-            return response()->json(['success'=> $success], 200);
-
-        }else{
-            return response()->json(['error'=> 'User is Loh'], 401);
+            return response()->json(['success'=> $success ], 200);
+        } else {
+            return response()->json(['error'=> 'Wrong passworsd or email' ], 401);
         }
     }
 
-    public function adminPost(){
+    public function adminPosts(){
         $posts = Post::all();
-        return response()->json(['success'=> $posts], 200);
+        return  response()->json(['success'=> $posts],200);
     }
+
+
+
 }

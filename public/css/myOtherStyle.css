@@ -1,8 +1,10 @@
 .post_section_1 {
   background: 'red';
+  color: 'white';
+  font-size: 20px;
 }
 
 .user_section_1 {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Courier New, Courier, monospace';
 }
 

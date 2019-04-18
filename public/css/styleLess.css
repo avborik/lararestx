@@ -2,6 +2,6 @@
   background: 'red';
 }
 .example {
-  background: url('/images/Sketch.jpeg');
-  color: red;
+  background: url(/images/knicks.jpeg?01ea2c1441cc27548cac54cb7965a39f);
+  color: 'red';
 }

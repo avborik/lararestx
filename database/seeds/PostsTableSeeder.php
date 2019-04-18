@@ -14,12 +14,11 @@ class PostsTableSeeder extends Seeder
     {
         Post::truncate();
 
-        for($i = 0; $i < 50; $i++){
-
+        for($i = 0; $i < 50;$i++){
             Post::create([
-                'title' => \Faker\Factory::create()->sentence,
-                'body' => \Faker\Factory::create()->paragraph
-                ]);
+                'title'=> \Faker\Factory::create()->sentence,
+                'body'=> \Faker\Factory::create()->paragraph
+            ]);
         }
     }
 }

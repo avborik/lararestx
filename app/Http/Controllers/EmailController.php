@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
-    public function contact(Request $request) {
+
+    public function contact(Request $request ){
+
         $input = $request->all();
+
         $email = $input['email'];
         $name = $input['name'];
         $body = $input['body'];
@@ -17,11 +20,16 @@ class EmailController extends Controller
             'email'=> $email,
             'name'=> $name,
             'body'=> $body
-        ],function($message) use($email) {
-            $message->from($email,'contact page');
-            $message->to('bba8ee446d-bfa052@inbox.mailtrap.io');
-        });
+        ],function($message) use( $email ) {
 
+            $message->from($email,'contact page');
+            $message->to('avboris28@gmail.com');
+            // $message->cc($moreUsers);
+            // $message->bcc($evenMoreUsers)
+            // $message->send(new OrderShipped($order));
+
+        });
         return response()->json(['message'=>'request completed']);
+
     }
 }

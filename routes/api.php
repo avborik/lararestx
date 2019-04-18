@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+
 Route::get('posts','PostsController@index');
 Route::get('posts/{id}','PostsController@show');
 Route::post('posts','PostsController@store');
@@ -27,14 +29,11 @@ Route::post('login','UserController@login');
 Route::post('register','UserController@register');
 
 Route::group(['middleware'=> 'auth:api'],function(){
-    Route::get('adminpost','UserController@adminPost');
+    Route::get('adminpost','UserController@adminPosts');
 });
 
 Route::post('contact','EmailController@contact');
 
-// Route::get('/contact',function(){
-//     return view('contact');
-// })->name('contact');
 // Route::get('posts',function(){
 //     return Post::all();
 // });
@@ -50,12 +49,14 @@ Route::post('contact','EmailController@contact');
 //     return $post;
 // });
 
+
 // Route::delete('posts/{id}',function($id){
 //     Post::find($id)->delete();
 
 //     return 204;
-
 // });
+
+
 // Route::post('posts',function(Request $request){
 //     return Post::create($request->all());
 // });

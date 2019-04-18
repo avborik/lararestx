@@ -1,3 +1,6 @@
+// 7f252764c35ba5fe5622
+// 4b4352813dc2b52b80aa
+
 
 window._ = require('lodash');
 window.Popper = require('popper.js').default;

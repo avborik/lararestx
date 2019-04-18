@@ -11,18 +11,16 @@
 |
 */
 
-
 Route::get('/', function () {
     return view('welcome');
 });
-
 
 Route::get('/posts', function () {
     return view('posts');
 });
 
 Route::get('/login', function () {
-    return 'please login';
+    return 'Please login';
 })->name('login');
 
 Route::get('/contact',function(){
