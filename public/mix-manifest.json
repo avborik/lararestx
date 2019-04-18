@@ -1,7 +1,8 @@
 {
-    "/js/main.js": "/js/main.js",
-    "/css/styleLess.css": "/css/styleLess.css",
-    "/css/myStyleConv.css": "/css/myStyleConv.css",
-    "/css/myOtherStyle.css": "/css/myOtherStyle.css",
-    "/css/mybundlecss.css": "/css/mybundlecss.css"
+    "/js/main.js": "/js/main.js?id=7b82f57d3c38e68bb54f",
+    "/css/styleLess.css": "/css/styleLess.css?id=590d705554086bfbba7b",
+    "/css/myStyleConv.css": "/css/myStyleConv.css?id=2756524e93498f6e5931",
+    "/css/myOtherStyle.css": "/css/myOtherStyle.css?id=9b0a5541d85b6cd0758d",
+    "/css/mybundlecss.css": "/css/mybundlecss.css?id=1297d4545d4bce747b7a",
+    "/res/what.json": "/res/what.json?id=d41d8cd98f00b204e980"
 }
