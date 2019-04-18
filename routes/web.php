@@ -24,3 +24,7 @@ Route::get('/posts', function () {
 Route::get('/login', function () {
     return 'please login';
 })->name('login');
+
+Route::get('/contact',function(){
+    return view('contact');
+})->name('contact');

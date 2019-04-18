@@ -31,6 +31,10 @@ Route::group(['middleware'=> 'auth:api'],function(){
 });
 
 Route::post('contact','EmailController@contact');
+
+// Route::get('/contact',function(){
+//     return view('contact');
+// })->name('contact');
 // Route::get('posts',function(){
 //     return Post::all();
 // });
